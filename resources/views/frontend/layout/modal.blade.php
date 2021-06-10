@@ -121,7 +121,7 @@
                     </div>
                     <small>* - необязательные поля</small>
                     <div class="text-center">
-                        <button type="submit" class="btn card-button">{{__("admin.register")}}</button>
+                        <button type="submit" class="btn card-button">{{__("frontend.register")}}</button>
 
                         <button type="button" class="btn card-button" data-dismiss="modal">{{__("admin.cancel")}}</button>
                     </div>

@@ -8,9 +8,14 @@
                     <h1>{{__("admin.users")}}</h1>
                 </div>
                 <div class="col-sm-6">
+
                     <a class="btn btn-primary float-right"
                        href="{{ route('users.create') }}">
                         {{__("admin.create")}}
+                    </a>
+                    <a class="btn btn-success float-right mr-2"
+                       href="{{ route('export-user') }}" download>
+                        <i class="fas fa-download"></i> Excel
                     </a>
                 </div>
             </div>

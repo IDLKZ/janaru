@@ -85,7 +85,7 @@ class Category extends Model
         'subtitle_kz' => 'required|string|max:255',
         'desc_ru' => 'required|string',
         'desc_kz' => 'required|string',
-        'img' => 'required|file|image|max:10240',
+        'img' => 'sometimes|nullable|file|image|max:10240',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

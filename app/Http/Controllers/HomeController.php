@@ -57,7 +57,7 @@ class HomeController extends Controller
         $input["phone"] = $user->phone;
         $input["is_admin"] = $user->is_admin;
         $input["is_admin"] = $user->is_admin;
-        $input["img"] = File::createFile($request,"img","/uploads/img/");
+        $input["img"] = File::updateFile($user->img,$request,"img","/uploads/img/");
         $user->update($input);
         Flash::success(__("messages.updated"));
 

@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <h5 class="modal-title font-weight-bold text-uppercase" id="exampleModalLabel">Регистрация</h5>
+                    <h5 class="modal-title font-weight-bold text-uppercase" id="exampleModalLabel">{{__("frontend.register")}}</h5>
                 </div>
                 <div>
                     @if ($errors->any())
@@ -119,7 +119,7 @@
 
                         </div>
                     </div>
-                    <small>* - необязательные поля</small>
+                    <small>* - {{__("frontend.not_important")}}</small>
                     <div class="text-center">
                         <button type="submit" class="btn card-button">{{__("frontend.register")}}</button>
 
@@ -196,6 +196,10 @@
                                     <button type="submit" class="btn btn-primary btn-block">{{__("frontend.login")}}</button>
                                 </div>
 
+                                <div class="col-md-12">
+                                    <a href="{{route("forget")}}">{{__("frontend.forget")}}</a>
+                                </div>
+
                             </div>
                         </form>
 
@@ -222,10 +226,13 @@
             </div>
             <div class="modal-body text-center">
                 <div class="my-2 text-center">
-                    <h1 class="modal-title fs-24 font-weight-bold text-dark text-uppercase" id="exampleModalLongTitle">Ваше резюме</h1>
+                    <h1 class="modal-title fs-24 font-weight-normal text-dark text-uppercase" id="exampleModalLongTitle">
+                        {{__("frontend.resume")}}
+                    </h1>
                 </div>
                 <div class="text-center py-2">
-                    <p>Вам необходимо скачать шаблон резюме, заполнить его и отправить на электронный адрес:
+                    <p>
+                        {{__("frontend.resume_title")}}
                         <a href="mailto:janarujcu@gmail.com">
                             janarujcu@gmail.com
                         </a>
@@ -239,7 +246,9 @@
                                 <i class="fas fa-download text-info"></i>
                             </div>
                             <div class="w-75">
-                                Скачать
+                                <span class="fs-16">
+                                  {{__("frontend.download")}}
+                                </span>
                                 <br>
                                 <small class="fs-12">
                                     Резюме.docx
@@ -256,9 +265,85 @@
 
 
                 <small>
-                    *в теме письма в обязательном порядке просим указать «Резюме от участника проекта Janaru»
+                    *{{__("frontend.resume_subtitle")}}
                 </small>
             </div>
         </div>
     </div>
 </div>
+
+@auth()
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="login-logo text-center">
+                    <a class="font-weight-bold fs-24 text-dark" href=""><b>JANARU</b></a>
+                </div>
+                <div class="card border-0">
+                    <div class="card-body login-card-body">
+                        @if(session()->has('fail'))
+                            <div class="alert alert-danger">
+                                {{ session()->get('fail') }}
+                            </div>
+                        @endif
+                        <form method="post" action="{{ route('write') }}">
+                            @csrf
+                            <input hidden value="{{  auth()->user()->surname . " " . auth()->user()->name }}" name="author">
+                            <div class="input-group mb-3">
+                                <input type="text"
+                                       name="title"
+                                       required
+                                       value="{{ old('title') }}"
+                                       placeholder="Заголовок"
+                                       class="form-control  modal-input">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <select class="form-select w-100" aria-label="Default select example" name="course_id">
+                                    @foreach(\App\Models\Category::all() as $category)
+
+                                        <option value="{{$category->id}}">
+                                            {{LaravelLocalization::getCurrentLocale() == "ru" ? $category->title_ru : $category->title_kz}}
+                                        </option>
+
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <textarea class="w-100" name="description" required>
+
+
+
+                                </textarea>
+
+
+                            </div>
+
+
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary btn-block">Оставить отзыв</button>
+                                </div>
+
+
+                            </div>
+                        </form>
+
+
+
+                    </div>
+                    <!-- /.login-card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endauth

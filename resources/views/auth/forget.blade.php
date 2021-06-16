@@ -22,19 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css"
           integrity="sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg=="
           crossorigin="anonymous"/>
-    <style>
-        @media screen and (min-width: 768px ) {
-            .login-page{
-                background-image: url('/img/login.gif');
-                background-size: 100%;
-                background-repeat: no-repeat;
-                background-position: center center
-            }
 
-        }
-
-
-    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -54,7 +42,7 @@
             <div class="login-logo">
                 <a class="text-warning font-weight-bold" href="/"><b>JANARU</b></a>
             </div>
-            <p class="login-box-msg">{{__("frontend.login_text")}}</p>
+            <p class="login-box-msg">{{__("frontend.reset_password")}}</p>
             @if(session()->has('success'))
                 <div class="alert alert-success">
                     {{ session()->get('success') }}
@@ -65,8 +53,16 @@
                     {{ session()->get('fail') }}
                 </div>
             @endif
-
-            <form method="post" action="{{ route('auth') }}">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form method="post" action="{{ route('send-verification') }}">
                 @csrf
 
                 <div class="input-group mb-3">
@@ -84,43 +80,34 @@
 
                 </div>
 
-                <div class="input-group mb-3">
-                    <input type="password"
-                           name="password"
-                           placeholder="{{__("admin.password")}}"
-                           class="form-control @error('password') is-invalid @enderror">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                    @error('password')
-                    <span class="error invalid-feedback">{{ $message }}</span>
-                    @enderror
-
-                </div>
 
                 <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember" name="remember">
-                            <label for="remember">{{__("frontend.remember_me")}}</label>
-                        </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            {{__("frontend.reset")}}
+                        </button>
                     </div>
 
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">{{__("frontend.login")}}</button>
-                    </div>
 
                 </div>
             </form>
 
-                <p class="mb-1">
-                    <a href="{{ route('forget') }}">{{__("frontend.forget")}}</a>
-                </p>
-                <p class="mb-0">
-                    <a href="{{ route('register') }}" class="text-center">{{__("frontend.register")}}</a>
-                </p>
+            {{--                <p class="mb-1">--}}
+            {{--                    <a href="{{ route('password.request') }}">{{__("frontend.forget")}}</a>--}}
+            {{--                </p>--}}
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{ route('register') }}">{{__("frontend.register")}}</a>
+
+
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="{{ route('login') }}">{{__("frontend.login")}}</a>
+
+                </div>
+            </div>
+
 
 
         </div>
@@ -137,3 +124,4 @@
 
 </body>
 </html>
+

@@ -57,7 +57,15 @@
 <!-- Skills Field -->
 <div class="col-sm-12">
     {!! Form::label('skills', __("admin.skills")) !!}
-    <p>{{ $user->skills }}</p>
+    @if($user->skills)
+        <ul>
+        @foreach(json_decode($user->skills) as $skill)
+        <li>{{$skill}}</li>
+        @endforeach
+        </ul>
+    @else
+        <br>
+    @endif
 </div>
 
 <!-- About Field -->

@@ -27,13 +27,14 @@
        let errors  = <?php echo ($errors->any() == true ? 1 : 0);?>;
        let success  = <?php echo (\Illuminate\Support\Facades\Session::has("success") == true ? 1 : 0);?>;
        let login  = <?php echo (\Illuminate\Support\Facades\Session::has("fail") == true ? 1 : 0);?>;
+
        if(errors){
            $("#gridSystemModal").modal("show");
        }
        if(success){
            Swal.fire(
                'Ура!',
-               'Вы успешно зарегистрировались!',
+                "Выполнено успешно!",
                'success'
            )
        }
@@ -41,7 +42,7 @@
     if(login){
         Swal.fire(
             'Ура!',
-            'Вы успешно зарегистрировались!',
+            "Выполнено успешно!",
             'success'
         )
     }

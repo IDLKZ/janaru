@@ -93,7 +93,7 @@ class Video extends Model
         'desc_ru' => 'required|string',
         'desc_kz' => 'required|string',
         'link' => 'required|string|max:255',
-        'img' => 'required|file|image|max:10240',
+        'img' => 'nullable|sometimes|file|image|max:10240',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

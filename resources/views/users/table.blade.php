@@ -2,7 +2,8 @@
     <table class="table" id="users-table">
         <thead>
             <tr>
-                <th>{{__("admin.is_admin")}}</th>
+        <th>{{__("admin.img")}}</th>
+        <th>{{__("admin.is_admin")}}</th>
         <th>{{__("admin.name")}}</th>
         <th>{{__("admin.surname")}}</th>
         <th>{{__("admin.middlename")}}</th>
@@ -18,7 +19,10 @@
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td>{{ $user->is_admin == 1 ? __("admin.admin") : __("admin.user") }}</td>
+            <td>
+                <img src="{{$user->img}}" width="100%">
+            </td>
+            <td>{{ $user->is_admin == 1 ? __("admin.admin") : __("admin.user") }}</td>
             <td>{{ $user->name }}</td>
             <td>{{ $user->surname }}</td>
             <td>{{ $user->middlename }}</td>

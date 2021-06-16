@@ -44,8 +44,8 @@
                                         @endforeach
                                     </ul>
                                     @endif
-                                    <div class="text-center py-2">
-                                        <a class="btn btn-secondary card-button" href="{{route("course",["alias"=>$category->alias])}}">{{__("frontend.start")}}</a>
+                                    <div class="text-center py-2 align-content-end font-weight-normal button-profession">
+                                        <a class="btn btn-secondary card-button font-weight-normal" href="{{route("course",["alias"=>$category->alias])}}">{{__("frontend.start")}}</a>
                                     </div>
                                 </div>
 

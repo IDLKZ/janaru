@@ -59,7 +59,9 @@
 <!-- Skills Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('skills', __("admin.skills")) !!}
-    {!! Form::select('skills',[], null, ['class' => 'form-control skill','multiple'=>"","name"=>"skills[]"]) !!}
+    {!! Form::select('skills',
+            isset($user->skills) == true ? ($user->skills != null ? json_decode($user->skills) : []) : []
+        , null, ['class' => 'form-control skill','multiple'=>"","name"=>"skills[]"]) !!}
 </div>
 
 <!-- About Field -->

@@ -95,7 +95,7 @@ class User extends Authenticatable
         'name' => 'required|string|max:255',
         'surname' => 'required|string|max:255',
         'middlename' => 'nullable|string|max:255',
-        'email' => 'required|email|unique:users,email|max:255',
+        'email' => 'required|email|max:255',
         'phone' => 'required|string|max:255',
         'work' => 'nullable|string|max:500',
         'birthday' => 'required|string|max:255',
@@ -103,8 +103,7 @@ class User extends Authenticatable
         'skills' => 'nullable',
         'about' => 'nullable|string',
         'email_verified' => 'required|integer',
-        'password' => 'required|string|max:255|min:4',
-        "same_password"=>'same:password|required|string|max:255|min:4',
+
         'remember_token' => 'nullable|string|max:100',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'

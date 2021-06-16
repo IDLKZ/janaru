@@ -17,11 +17,15 @@
             </div>
             <div class="col-md-6 headbar-block d-flex justify-content-center align-items-center border-right">
                 Адрес:
-                <a href="https://go.2gis.com/zs1gfy"> Республика Казахстана, г. Нур-Султан, пр. Мангилик ел 55/13, офис 1.12</a>
+                <a href="https://go.2gis.com/zs1gfy">
+                    Республика Казахстана, г. Нур-Султан, пр. Кабанбай батыра 19, блок Е                </a>
             </div>
             <div class="col-md-1 headbar-block d-flex justify-content-center align-items-center">
                 <a class="fs-16 text-secondary" href="instagram.com">
                 <i class="fab fa-instagram"></i>
+                </a>
+                <a class="fs-16 text-secondary ml-2" href="telegram.com">
+                    <i class="fab fa-telegram"></i>
                 </a>
             </div>
         </div>

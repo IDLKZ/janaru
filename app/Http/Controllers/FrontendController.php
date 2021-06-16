@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Forget;
+use App\Mail\Register;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\File;
+use App\Models\Recovery;
 use App\Models\Review;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class FrontendController extends Controller
 {
@@ -57,7 +63,6 @@ class FrontendController extends Controller
     }
 
     public function videoSingle($alias){
-        $this->middleware("auth");
         if($alias){
             $video = Video::firstWhere("alias",$alias);
             if($video){
@@ -111,10 +116,13 @@ class FrontendController extends Controller
         $input = $request->all();
         $input["img"] = File::createFile($request,"img","/uploads/img/");
         $input["password"] = bcrypt($input["password"]);
-        $input["skills"] = json_encode($input["skills"]);
+        $input["skills"] = $request->skills ? json_encode($input["skills"]) : null;
         $input["is_admin"] = 0;
         $model = new User();
         if($model->fill($input)->save()){
+            $input = collect($input);
+            Mail::to($input->email)->send(new Register($input));
+
             return back()->with("success","Успешно зарегистрировано");
         }
         else{
@@ -140,6 +148,73 @@ class FrontendController extends Controller
         else{
             return abort(404);
         }
+
+    }
+
+
+    public function forget(){
+        return view("auth.forget");
+    }
+
+    public function verification(Request $request){
+        $this->validate($request,["email"=>"required|email"]);
+        if($user = User::firstWhere("email",$request->email)){
+            $recovery = Recovery::firstWhere("user_id",$user->id);
+            if ($recovery){$recovery->delete();}
+            $code = Str::random(16);
+            Recovery::create([
+               "user_id"=>$user->id,
+                "code"=>$code,
+                "expiration_date"=>Carbon::now()->addDay()
+            ]);
+            Mail::to($user->email)->send(new Forget($user,$code));
+
+        }
+        return redirect()->back()->with("success","Успешно отправлен код на восстановление доступа!");
+    }
+
+    public function checkVerification($code){
+        $verification = Recovery::where(["code"=>$code])->first();
+        if($verification){
+            if($verification->expiration_date > Carbon::now()){
+                $user = User::firstWhere("id",$verification->user_id);
+                return view("auth.recovery",compact("user","code"));
+            }
+            else{
+                $verification->delete();
+                abort(404);
+            }
+        }
+        else{
+            abort(404);
+        }
+    }
+
+    public function changePassword(Request $request){
+        $this->validate($request,["password"=>"required|min:4|max:255","same_password"=>"same:password|required|min:4|max:255"]);
+        $recovery = Recovery::firstWhere("code",$request->code);
+        if($recovery){
+            $user = User::firstWhere("id",$recovery->user_id);
+            if($user){
+                $user->password = bcrypt($request->password);
+                $user->save();
+                $recovery->delete();
+                return  redirect()->route("login")->with("success",__("messages.success"));
+            }
+            abort(404);
+        }
+        abort(404);
+    }
+
+
+    public function write(Request $request){
+        $this->validate($request, ['img' => 'nullable|file|image|max:10240', 'course_id' => 'required', 'author' => 'required|string|max:255', 'title' => 'required|string|max:255', 'description' => 'required|string',]);
+        $review = new Review();
+        $review->fill($request->all())->save();
+        return redirect()->back()->with("success","Успешно добавлен отзыв!");
+
+
+
 
     }
 }

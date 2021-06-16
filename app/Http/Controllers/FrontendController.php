@@ -50,7 +50,7 @@ class FrontendController extends Controller
             if($course){
                 $courses = Course::where("category_id",$course->category_id)->get();
                 $videos = Video::where("course_id",$course->id)->get();
-                return view("frontend.videos",compact("course","courses","videos"));
+                return view("frontend.videos",compact("course","courses","videos","alias"));
             }
             else{
                 return  abort(404);

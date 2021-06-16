@@ -122,6 +122,12 @@ body{
     margin-left: 10px;
     display: inline-block;
     min-height: 45px;
+}
+
+.profession-button-active{
+    background-color: #0D369F;
+    color: white;
+    font-size: 16px;
 
 }
 

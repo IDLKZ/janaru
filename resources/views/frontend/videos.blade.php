@@ -42,7 +42,12 @@
                    @if($courses->isNotEmpty())
                        @foreach($courses as $course)
                            <div class="mt-2">
-                               <a href="{{route("video",["alias"=>$course->alias])}}" class="btn-lg profession-button btn-link">
+                               <a href="{{route("video",["alias"=>$course->alias])}}" class="btn-lg profession-button btn-link
+                                @php
+                                   echo $course->alias == $alias ? 'profession-button-active' : '';
+                                   @endphp
+
+                                ">
                                    {{LaravelLocalization::getCurrentLocale() == "ru" ? $course->title_ru : $course->title_kz}}
                                </a>
                            </div>

@@ -120,8 +120,11 @@ class FrontendController extends Controller
         $input["is_admin"] = 0;
         $model = new User();
         if($model->fill($input)->save()){
-            $input = collect($input);
-            Mail::to($input->email)->send(new Register($input));
+            $user = User::firstWhere("email",$input["email"]);
+            if($user){
+                Mail::to($user->email)->send(new Register($user));
+
+            }
 
             return back()->with("success","Успешно зарегистрировано");
         }

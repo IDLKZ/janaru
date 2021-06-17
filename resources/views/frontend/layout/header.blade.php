@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-6 headbar-block d-flex justify-content-center align-items-center border-right">
                 Адрес:
-                <a href="https://go.2gis.com/zs1gfy">
+                <a href="https://go.2gis.com/9gsm6v">
                     Республика Казахстана, г. Нур-Султан, пр. Кабанбай батыра 19, блок Е                </a>
             </div>
             <div class="col-md-1 headbar-block d-flex justify-content-center align-items-center">

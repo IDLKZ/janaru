@@ -66,10 +66,10 @@
                         <p class="copy">© Jascongress. {{__("frontend.copyright")}} {{\Illuminate\Support\Carbon::now()->format("Y")}}.</p>
                     </div>
                     <div class="col-lg-4 col-md-12 text-right">
-                        <a class="fs-24 text-secondary" href="instagram.com">
+                        <a class="fs-24 text-secondary" href="https://instagram.com/janaru.kz?utm_medium=copy_link" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a class="fs-24 text-secondary ml-2" href="telegram.com">
+                        <a class="fs-24 text-secondary ml-2" href="https://t.me/janaru2021" target="_blank">
                             <i class="fab fa-telegram"></i>
                         </a>
                     </div>

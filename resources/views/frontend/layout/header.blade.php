@@ -21,10 +21,10 @@
                     Республика Казахстана, г. Нур-Султан, пр. Кабанбай батыра 19, блок Е                </a>
             </div>
             <div class="col-md-1 headbar-block d-flex justify-content-center align-items-center">
-                <a class="fs-16 text-secondary" href="instagram.com">
+                <a class="fs-16 text-secondary" href="https://instagram.com/janaru.kz?utm_medium=copy_link" target="_blank">
                 <i class="fab fa-instagram"></i>
                 </a>
-                <a class="fs-16 text-secondary ml-2" href="telegram.com">
+                <a class="fs-16 text-secondary ml-2" href="https://t.me/janaru2021" target="_blank">
                     <i class="fab fa-telegram"></i>
                 </a>
             </div>

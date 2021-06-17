@@ -17,7 +17,7 @@
                         </li>
                         <li class="nav-item  fs-14 mt-2">
                             <i class="fas fa-map"></i>
-                            <a class="text-white" href="https://go.2gis.com/zs1gfy"> Республика Казахстана, г. Нур-Султан, пр. Кабанбай батыра 19, блок Е</a>
+                            <a class="text-white" href="https://go.2gis.com/9gsm6v"> Республика Казахстана, г. Нур-Султан, пр. Кабанбай батыра 19, блок Е</a>
                         </li>
                     </ul>
                 </div>

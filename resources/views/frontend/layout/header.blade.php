@@ -102,7 +102,7 @@
                 </li>
                 <li class="nav-item dropdown fs-14 mt-2">
                     <i class="fas fa-map"></i>
-                    <a class="text-dark" href="https://go.2gis.com/zs1gfy"> Республика Казахстана, г. Нур-Султан, пр. Мангилик ел 55/13, офис 1.12</a>
+                    <a class="text-dark" href="https://go.2gis.com/9gsm6v"> Республика Казахстана, г. Нур-Султан, пр. Мангилик ел 55/13, офис 1.12</a>
                 </li>
                 </div>
 

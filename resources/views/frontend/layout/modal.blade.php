@@ -240,7 +240,7 @@
                 </div>
 
                 <div class="text-center">
-                    <a href="/resume.txt" download="" class="btn btn-lg resume-button text-uppercase">
+                    <a href="/resume.docx" download="" class="btn btn-lg resume-button text-uppercase">
                         <div class="d-flex">
                             <div class="w-25 d-flex justify-content-center align-items-center px-4">
                                 <i class="fas fa-download text-info"></i>

@@ -32,7 +32,7 @@
                             {{ LaravelLocalization::getCurrentLocale() == "ru" ? $category->title_ru : $category->title_kz}}
                         </span>
                                 <div class="card-img">
-                                    <img src="{{$category->img}}">
+                                    <img src="{{$category->img}}" width="100%">
                                 </div>
                                 <div class="card-profession">
                                     @if($category->courses->isNotEmpty())

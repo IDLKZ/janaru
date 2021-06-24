@@ -41,7 +41,7 @@
             <img class="my-logo" src="/img/logo2.png">
         </a>
         <a class="navbar-brand" href="/">
-            <img class="my-logo" src="/img/logo3.png">
+            <img class="my-logo logo3" src="/img/logo3.png">
         </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -31,8 +31,8 @@
                         <span class="card-announce">
                             {{ LaravelLocalization::getCurrentLocale() == "ru" ? $category->title_ru : $category->title_kz}}
                         </span>
-                                <div class="card-img">
-                                    <img src="{{$category->img}}" width="100%">
+                                <div class="card-img overflow-hidden">
+                                    <img src="{{$category->img}}">
                                 </div>
                                 <div class="card-profession">
                                     @if($category->courses->isNotEmpty())
